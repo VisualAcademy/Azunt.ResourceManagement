@@ -33,7 +33,7 @@
                     <thead class="thead-light">
                         <tr>
                             <th class="text-center text-nowrap" @onclick="@(() => SortByAlias())" style="cursor: pointer;">
-                                Resource Key <Azunt.Components.Sorting.SortOrderArrow SortColumn="Alias" SortOrder="@sortOrder"></Azunt.Components.Sorting.SortOrderArrow>
+                                Resource Key @* <Azunt.Components.Sorting.SortOrderArrow SortColumn="Alias" SortOrder="@sortOrder"></Azunt.Components.Sorting.SortOrderArrow> *@
                             </th>
                             <th class="text-center text-nowrap">Page Link</th>
                             <th class="text-center text-nowrap">Display Title</th>
