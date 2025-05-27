@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <!-- NuGet 버전 정보 -->
+        <VersionPrefix>1.0.3</VersionPrefix>
+        <VersionSuffix></VersionSuffix>
+
+        <!-- NuGet 패키지 메타데이터 -->
+        <Title>Azunt.ResourceManagement</Title>
+        <Description>Azunt.ResourceManagement is a reusable .NET module for managing hierarchical resources in multi-tenant applications. Supports SQL Server via EF Core, Dapper, and ADO.NET.</Description>
+        <PackageTags>Azunt, resource, multi-tenant, EFCore, Dapper, ADO.NET, Blazor, SQLServer</PackageTags>
+
+        <Authors>VisualAcademy</Authors>
+        <Company>Hawaso</Company>
+
+        <!-- GitHub 저장소 정보 (private 가능) -->
+        <PackageProjectUrl>https://github.com/VisualAcademy/Azunt.ResourceManagement</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/VisualAcademy/Azunt.ResourceManagement</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+
+        <!-- 저작권 -->
+        <Copyright>© 2025 Hawaso. All rights reserved.</Copyright>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Azunt" Version="1.1.0" />
+        <PackageReference Include="Dapper" Version="2.1.66" />
+        <!--<PackageReference Include="Dul" Version="1.3.4" />-->
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+        <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
+    </ItemGroup>
+
+</Project>
