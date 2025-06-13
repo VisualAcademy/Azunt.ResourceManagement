@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
 
         <!-- NuGet 버전 정보 -->
-        <VersionPrefix>1.0.3</VersionPrefix>
+        <VersionPrefix>1.0.4</VersionPrefix>
         <VersionSuffix></VersionSuffix>
 
         <!-- NuGet 패키지 메타데이터 -->
