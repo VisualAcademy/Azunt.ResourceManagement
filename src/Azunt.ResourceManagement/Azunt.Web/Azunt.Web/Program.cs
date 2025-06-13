@@ -1,4 +1,5 @@
 using Azunt.ResourceManagement;
+using Azunt.ResourceManagement.Initializers;
 using Azunt.Web.Components;
 using Azunt.Web.Components.Account;
 using Azunt.Web.Data;
@@ -45,7 +46,22 @@ builder.Services.AddTransient<ResourceAppDbContextFactory>();
 
 var app = builder.Build();
 
-Azunt.ResourceManagement.ResourcesTableBuilder.Run(app.Services, true);
+// DB 초기화
+using (var scope = app.Services.CreateScope())
+{
+    var logger = scope.ServiceProvider.GetRequiredService<ILoggerFactory>()
+        .CreateLogger("ResourceInitialization");
+
+    var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
+
+    // (1) 테이블 생성 및 보강 (테이블이 없으면 생성, 필드 없으면 보강)
+    ResourcesTableBuilder.Run(app.Services, forMaster: true); // 마스터 DB용
+
+    // (2) 시드 데이터 삽입 (앱 이름별로 분리 가능)
+    ResourceSeeder.InsertRequiredResources(connectionString, logger, appName: null);
+    ResourceSeeder.InsertRequiredResources(connectionString, logger, appName: "DotNetNote");
+    // 필요한 경우 다수 AppName 호출 가능
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

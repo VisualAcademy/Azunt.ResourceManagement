@@ -9,6 +9,13 @@ namespace Azunt.ResourceManagement.Initializers;
 /// </summary>
 public static class ResourceSeeder
 {
+    public static void InsertRequiredResources(string connectionString, ILogger logger, string? appName = null)
+    {
+        using var connection = new SqlConnection(connectionString);
+        connection.Open();
+        InsertRequiredResources(connection, logger, appName);
+    }
+
     /// <summary>
     /// 지정된 SqlConnection을 사용하여 Resources 테이블에 초기 데이터를 삽입 또는 갱신합니다.
     /// </summary>
