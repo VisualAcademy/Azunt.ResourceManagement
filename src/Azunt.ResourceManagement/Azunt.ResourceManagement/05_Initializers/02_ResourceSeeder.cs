@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 
-namespace Azunt.ResourceManagement.Initializers;
+namespace Azunt.ResourceManagement;
 
 /// <summary>
 /// Resources 테이블에 초기 데이터를 삽입하는 클래스입니다.

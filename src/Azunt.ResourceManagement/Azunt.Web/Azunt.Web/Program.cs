@@ -1,5 +1,4 @@
 using Azunt.ResourceManagement;
-using Azunt.ResourceManagement.Initializers;
 using Azunt.Web.Components;
 using Azunt.Web.Components.Account;
 using Azunt.Web.Data;
