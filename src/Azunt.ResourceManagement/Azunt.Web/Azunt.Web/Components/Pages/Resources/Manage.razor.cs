@@ -11,6 +11,8 @@ namespace Azunt.Web.Components.Pages.Resources;
 
 public partial class Manage : ComponentBase
 {
+    private string appName = "ReportWriter"; // 기본값 설정
+
     public bool SimpleMode { get; set; } = false;
 
     #region Parameters
@@ -66,14 +68,14 @@ public partial class Manage : ComponentBase
             await GetUserIdAndUserName();
         }
 
+        appName = Configuration["AppName"] ?? "ReportWriter"; // appsettings.json에서 AppName 읽기
+
         await DisplayData();
     }
     #endregion
 
     private async Task DisplayData()
     {
-        var appName = Configuration["AppName"] ?? "ReportWriter"; // appsettings.json에서 AppName 읽기
-
         var allModels = await RepositoryReference.GetAllByAppNameAsync(appName);
 
         // 검색 적용
@@ -109,14 +111,20 @@ public partial class Manage : ComponentBase
     protected void ShowEditorForm()
     {
         EditorFormTitle = "CREATE";
-        this.model = new Resource();
+        this.model = new Resource
+        {
+            AppName = appName
+        };
         EditorFormReference.Show();
     }
 
     protected void EditBy(Resource model)
     {
         EditorFormTitle = "EDIT";
-        this.model = new Resource();
+        if (string.IsNullOrEmpty(model.AppName))
+        {
+            model.AppName = appName;
+        }
         this.model = model;
         EditorFormReference.Show();
     }
